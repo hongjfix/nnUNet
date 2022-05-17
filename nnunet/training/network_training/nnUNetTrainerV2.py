@@ -113,8 +113,9 @@ class nnUNetTrainerV2(nnUNetTrainer):
                 )
                 #self.print_to_log_file("finish initialize tr_gen.next:" + str(self.tr_gen.next()))
                 self.print_to_log_file("finish initialize tr_gen.num_processes:" + str(self.tr_gen.num_processes))
-                self.print_to_log_file("finish initialize val_gen.num_processes" + str(self.val_gen.num_processes))
-                #self.print_to_log_file("finish initialize val_gen:" + str(self.val_gen.next()))
+                self.print_to_log_file("finish initialize val_gen.num_processes:" + str(self.val_gen.num_processes))
+                self.print_to_log_file("finish initialize self.dl_val.patch_size:" + str(self.dl_val.patch_size))
+                self.print_to_log_file("finish initialize self.dl_val.seg_shape:" + str(self.dl_val.seg_shape))
                 self.print_to_log_file("TRAINING KEYS:\n %s" % (str(self.dataset_tr.keys())),
                                        also_print_to_console=True)
                 self.print_to_log_file("VALIDATION KEYS:\n %s" % (str(self.dataset_val.keys())),

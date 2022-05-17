@@ -437,6 +437,7 @@ class nnUNetTrainerV2(nnUNetTrainer):
         # want at the start of the training
         ds = self.network.do_ds
         self.network.do_ds = True
+        self.print_to_log_file("start run_training")
         ret = super().run_training()
         self.network.do_ds = ds
         return ret

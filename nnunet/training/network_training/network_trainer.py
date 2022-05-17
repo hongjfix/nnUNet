@@ -412,6 +412,7 @@ class NetworkTrainer(object):
         pass
 
     def run_training(self):
+        self.print_to_log_file("in run_training")
         if not torch.cuda.is_available():
             self.print_to_log_file("WARNING!!! You are attempting to run training on a CPU (torch.cuda.is_available() is False). This can be VERY slow!")
 
@@ -421,19 +422,24 @@ class NetworkTrainer(object):
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
 
+        self.print_to_log_file("cuda evaluation end")
         self._maybe_init_amp()
 
+        self.print_to_log_file("start maybe_mkdir_p")
         maybe_mkdir_p(self.output_folder)        
         self.plot_network_architecture()
 
+        self.print_to_log_file("maybe_mkdir_p end")
         if cudnn.benchmark and cudnn.deterministic:
             warn("torch.backends.cudnn.deterministic is True indicating a deterministic training is desired. "
                  "But torch.backends.cudnn.benchmark is True as well and this will prevent deterministic training! "
                  "If you want deterministic then set benchmark=False")
 
+        self.print_to_log_file("start initialize")
         if not self.was_initialized:
             self.initialize(True)
 
+        self.print_to_log_file("start epoch")
         while self.epoch < self.max_num_epochs:
             self.print_to_log_file("\nepoch: ", self.epoch)
             epoch_start_time = time()

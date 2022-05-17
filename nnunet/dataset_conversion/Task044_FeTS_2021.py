@@ -33,7 +33,7 @@ if __name__ == "__main__":
     """
 
     task_name = "Task044_FeTS2021"
-    downloaded_data_dir = "/home/hongjian/data/MICCAI_FeTS2021_TrainingData"
+    downloaded_data_dir = "/home1/gaohongj/MICCAI_FeTS2021_TrainingData"
 
     target_base = join(nnUNet_raw_data, task_name)
     target_imagesTr = join(target_base, "imagesTr")
@@ -105,7 +105,7 @@ if __name__ == "__main__":
 
     save_json(json_dict, join(target_base, "dataset.json"))
 
-    downloaded_data_dir = "/home/hongjian/data/MICCAI_FeTS2021_ValidationData"
+    downloaded_data_dir = "/home1/gaohongj/MICCAI_FeTS2021_ValidationData"
 
     for p in subdirs(downloaded_data_dir, join=False):
         patdir = join(downloaded_data_dir, p)

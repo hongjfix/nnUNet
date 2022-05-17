@@ -418,7 +418,7 @@ class NetworkTrainer(object):
 
         self.print_to_log_file("finish torch.cuda.is_available()")
         _ = self.tr_gen.next()
-        _ = self.val_gen.next()
+        #_ = self.val_gen.next()
 
         self.print_to_log_file("start torch.cuda.empty_cache()")
         if torch.cuda.is_available():

@@ -111,8 +111,8 @@ class nnUNetTrainerV2(nnUNetTrainer):
                     pin_memory=self.pin_memory,
                     use_nondetMultiThreadedAugmenter=False
                 )
-                self.print_to_log_file("finish initialize tr_gen:" + self.tr_gen.num_processes)
-                self.print_to_log_file("finish initialize val_gen:" + self.val_gen.num_processes)
+                self.print_to_log_file("finish initialize tr_gen:" + str(self.tr_gen))
+                self.print_to_log_file("finish initialize val_gen:" + str(self.val_gen))
                 self.print_to_log_file("TRAINING KEYS:\n %s" % (str(self.dataset_tr.keys())),
                                        also_print_to_console=True)
                 self.print_to_log_file("VALIDATION KEYS:\n %s" % (str(self.dataset_val.keys())),

@@ -454,8 +454,9 @@ class NetworkTrainer(object):
                 with trange(self.num_batches_per_epoch) as tbar:
                     for b in tbar:
                         tbar.set_description("Epoch {}/{}".format(self.epoch+1, self.max_num_epochs))
-
+                        self.print_to_log_file("run_iteration begin")
                         l = self.run_iteration(self.tr_gen, True)
+                        self.print_to_log_file("run_iteration end")
 
                         tbar.set_postfix(loss=l)
                         train_losses_epoch.append(l)
@@ -471,8 +472,11 @@ class NetworkTrainer(object):
                 # validation with train=False
                 self.network.eval()
                 val_losses = []
+                self.print_to_log_file("num_val_batches_per_epoch=" + str(self.num_val_batches_per_epoch))
                 for b in range(self.num_val_batches_per_epoch):
+                    self.print_to_log_file("val_gen=" + str(self.val_gen))
                     l = self.run_iteration(self.val_gen, False, True)
+                    self.print_to_log_file("val_gen end")
                     val_losses.append(l)
                 self.all_val_losses.append(np.mean(val_losses))
                 self.print_to_log_file("validation loss: %.4f" % self.all_val_losses[-1])
